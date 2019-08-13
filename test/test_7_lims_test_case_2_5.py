@@ -1,6 +1,6 @@
 # Заява про звуження переліку лікарських форм (Додаток 16)
 
-def test_5_lims_test_case_2_3(app):
+def test_7_lims_test_case_2_5(app):
     app.session.login(password='111',
                       path_to_key='C:/98745612_7878789898_DU180323123055.ZS2')
 

@@ -126,7 +126,7 @@ class FirstApplicationHelper:
         wd.find_element_by_xpath("//div[contains(.,'вул. Тестова Вулиця')]").click()
 
         # Заповнюємо форми Створення провадження діяльності: Адреса місця провадження діяльності (англійською)* «Test»
-        wd.find_element_by_xpath("//input[@id='AdressEng']").send_keys(adress)
+#        wd.find_element_by_xpath("//input[@id='AdressEng']").send_keys(adress)
 
         # Заповнюємо форми Створення провадження діяльності: Номер будинку, корпус або будівля, номер квартири або офісу* «13»
         wd.find_element_by_xpath("//input[@id='Building']").send_keys(building)
@@ -572,6 +572,8 @@ class FirstApplicationHelper:
         wd.find_element_by_xpath("//input[@id='files']").send_keys(path_to_file)
         wd.find_element_by_xpath("//div[@id='uploadForm']/form/div[3]/button/i").click()
 
+        time.sleep(1)
+
         # Натискаємо кнопку «ЗБЕРЕГТИ»
         wd.find_element_by_xpath("//input[@value='Зберегти']").click()
 
@@ -770,7 +772,7 @@ class FirstApplicationHelper:
         wd.find_element_by_xpath("//div[contains(.,'Тестова Вулиця')]").click()
 
         # Заповнюємо форми Створення провадження діяльності: Адреса місця провадження діяльності (англійською)* «Test»
-        wd.find_element_by_xpath("//input[@id='AdressEng']").send_keys(adress)
+#        wd.find_element_by_xpath("//input[@id='AdressEng']").send_keys(adress)
 
         # Заповнюємо форми Створення провадження діяльності: Номер будинку, корпус або будівля, номер квартири або офісу* «13»
         wd.find_element_by_xpath("//input[@id='Building']").send_keys(building)
@@ -1143,6 +1145,7 @@ class FirstApplicationHelper:
 
 ################################################################################################################################################################################## 6
 
+# ЗМІНА УПОВНОВАЖЕНИХ ОСІБ
 
     def create_sixth_application(self):
         wd = self.app.wd
@@ -1168,16 +1171,68 @@ class FirstApplicationHelper:
         time.sleep(2)
 
         # обираємо першу УО редагування
-        wd.find_element_by_xpath("//div[@class='content-list-edit']").click()
+        wd.find_element_by_xpath("//div[@class='content-list'][1]").click()
 
         # Змінюємо Ім'я на "Тест зміна"
-        wd.find_element_by_xpath("//div[@class='content-list-edit']").send_keys("Тест зміна")
+        wd.find_element_by_xpath("//input[@id='Name']").send_keys("Тест зміна")
 
 
         # Натискаємо кнопку «ЗБЕРЕГТИ»
         wd.find_element_by_xpath("//input[@value='Зберегти']").click()
 
-        time.sleep(10)
+
+        time.sleep(1)
+
+    ################################################################################################################################################################################## 7
+
+    # ЗМІНА ЗМІНА КОНТРАКТНИХ КОНТРАГЕНТІВ
+
+    def create_seventh_application(self):
+        wd = self.app.wd
+        # У меню з ліва натискаємо пункт «Подання заяв»
+        wd.find_element_by_xpath("//ul[@id='aside-menu']/li[2]/div/a/div/span").click()
+
+        #        time.sleep(3)
+        # Натискаємо кнопку створити заяву (У правому верхньому куті Синій кружочок з білим хрестиком у центрі)
+        wd.find_element_by_xpath("//a[contains(@ href,'/App/AppTypes')]").click()
+
+        # На сторінці Створення нової заяви, на переліку заяв натискаємо «Заява щодо провадження діяльності з виробництва лікарських засобів (промислового)»
+        wd.find_element_by_xpath("//div[@id='content']/div[2]/div/div").click()
+
+        # У вище вказанному переліку заяв обираємо пункт «Заява про звуження переліку лікарських форм» (додаток 16)
+#        wd.find_element_by_xpath("//*[text()='Заява на зміну контрактних виробників і контрактних лабораторій']").click()
+        wd.find_element_by_xpath("//*[contains(text(), 'на зміну контрактних виробників і контрактних')]").click()
+
+    def contract_contractors_seventh(self, edrpou, name_contractor, adress):
+        wd = self.app.wd
+        # Натискаємо кнопку «Контрактні контрагенти»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[3]/i").click()
+
+        time.sleep(2)
+
+        # Натискаємо кнопку «Додати Контрактного контрагента» (з верху з права білий хрестик)
+        wd.find_element_by_xpath("//div[@id='content-btn']/a").click()
+
+        # Заповнюємо форми Створення Контрактного контрагента: Тип контрагента* обираемо вариант «Контрактна лабораторія»
+        wd.find_element_by_xpath("//div[@id='content']/div[2]/div/form/div/div/div/div/div").click()
+        wd.find_element_by_xpath("//div[@id='content']/div[2]/div/form/div/div/div/div/ul/li[3]").click()
+
+        # Заповнюємо форми Створення Контрактного контрагента: ЄДРПОУ/ІПН* «12345678»(мінімальна кількість знаків 8 шт.)
+        wd.find_element_by_xpath("//input[@id='Edrpou']").send_keys(edrpou)
+
+        # Заповнюємо форми Створення Контрактного контрагента: Найменування суб'єкта господарювання «Тест»
+        wd.find_element_by_xpath("//input[@id='Name']").send_keys(name_contractor)
+
+        # Заповнюємо форми Створення Контрактного контрагента: Найменування, місце провадження діяльності* «Тест»
+        wd.find_element_by_xpath("//input[@id='Address']").send_keys(adress)
+
+        # Заповнюємо форми Створення Контрактного контрагента: Оберіть МПД «Тест1»
+        wd.find_element_by_xpath("//button[@type='button']").click()
+        wd.find_element_by_xpath("//div[@id='ms-list-1']/div/ul/li/label[contains(text(), 'Тест1')]").click()
+
+        # Натискаємо кнопку «ЗБЕРЕГТИ»
+        wd.find_element_by_xpath("//input[@value='Зберегти']").click()
+        time.sleep(1)
 
 
 
