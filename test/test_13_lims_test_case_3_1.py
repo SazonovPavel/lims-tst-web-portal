@@ -43,15 +43,13 @@ def test_13_lims_test_case_3_1(app):
                            street='Тестова вулиця',
                            adress='Test',
                            building='13')
-    app.first_application.contract_contractors(edrpou='12345678',
-                                     name_contractor='Тест1',
-                                     adress='Тест1')
-    app.first_application.contract_contractors_2(edrpou='12345678',
-                                               name_contractor='Тест2',
-                                               adress='Тест2')
-    app.first_application.contract_contractors_3(edrpou='12345678',
-                                               name_contractor='Тест3',
-                                               adress='Тест3')
+    app.first_application.information_about_medicines()
+
+
+
+
+
+
     app.first_application.authorized_persons(person_name='Тест',
                                    person_middle_name='Тестович',
                                    person_last_name='1 - Тестов',

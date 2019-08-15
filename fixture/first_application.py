@@ -126,7 +126,7 @@ class FirstApplicationHelper:
         wd.find_element_by_xpath("//div[contains(.,'вул. Тестова Вулиця')]").click()
 
         # Заповнюємо форми Створення провадження діяльності: Адреса місця провадження діяльності (англійською)* «Test»
-#        wd.find_element_by_xpath("//input[@id='AdressEng']").send_keys(adress)
+        wd.find_element_by_xpath("//input[@id='AdressEng']").send_keys(adress)
 
         # Заповнюємо форми Створення провадження діяльності: Номер будинку, корпус або будівля, номер квартири або офісу* «13»
         wd.find_element_by_xpath("//input[@id='Building']").send_keys(building)
@@ -1234,50 +1234,6 @@ class FirstApplicationHelper:
         wd.find_element_by_xpath("//input[@value='Зберегти']").click()
         time.sleep(1)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ################################################################################################################################################################################## 10
 
 
@@ -1348,7 +1304,7 @@ class FirstApplicationHelper:
 
         time.sleep(5)
 
-##################################################################################################################################################################################  Import
+##################################################################################################################################################################################  Import 13
     def create_import_first_application(self, pib, email, phone_number, fax_number, city, flat, street, index,
                                  number_national_account, requisits_number_national_account, number_foreign_account,
                                  requisits_number_forein_account, duns_number):
@@ -1455,17 +1411,12 @@ class FirstApplicationHelper:
         wd.find_element_by_xpath("//div[contains(.,'вул. Тестова Вулиця')]").click()
 
         # Заповнюємо форми Створення провадження діяльності: Адреса місця провадження діяльності (англійською)* «Test»
-        wd.find_element_by_xpath("//input[@id='AdressEng']").send_keys(adress)
+#        wd.find_element_by_xpath("//input[@id='AdressEng']").send_keys(adress)
 
         # Заповнюємо форми Створення провадження діяльності: Номер будинку, корпус або будівля, номер квартири або офісу* «13»
         wd.find_element_by_xpath("//input[@id='Building']").send_keys(building)
 
         time.sleep(2)
-
-
-
-
-
 
         # Обераємо чекбокс «Складські зони (приміщення для зберігання)»
         wd.find_element_by_xpath("//label[contains(text(), 'Складські зони (приміщення для зберігання)')]").click()
@@ -1474,10 +1425,460 @@ class FirstApplicationHelper:
         wd.find_element_by_xpath("//label[contains(text(), 'Зони здійснення видачі дозволу на випуск (реалізацію) серії лікарського засобу')]").click()
         wd.find_element_by_xpath("//label[contains(text(), 'Імпорт зареєстрованих готових лікарських засобів')]").click()
 
-
-
         # Натискаємо кнопку «ЗБЕРЕГТИ»
         wd.find_element_by_xpath("//input[@id='submitBranch']").click()
 
         # Перевірка переходу на сторінку "Заява про отримання ліцензії на провадження діяльності"
         wd.find_element_by_xpath("//h1[contains(.,'Заява про отримання ліцензії на провадження діяльності')]")
+
+    def information_about_medicines(self):
+        wd = self.app.wd
+        # Натискаємо кнопку «Інформація про лікарськи засоби»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[3]").click()
+
+        # Натискаємо кнопку «Завантажити перелік лікарських засобів» (з верху з права білий хрестик)
+        wd.find_element_by_xpath("//div[@id='content-btn']/a[3]").click()
+        wd.find_element_by_xpath("//div[@id='content-btn']/a[3]").send_keys('C:/ooooooooooo.xlsx')
+
+        time.sleep(20)
+
+##################################################################################################################################################################################  Import 14
+
+    def create_import_second_application(self):
+        wd = self.app.wd
+        # У меню з ліва натискаємо пункт «Подання заяв»
+        wd.find_element_by_xpath("//ul[@id='aside-menu']/li[2]/div/a/div/span").click()
+
+        #        time.sleep(3)
+        # Натискаємо кнопку створити заяву (У правому верхньому куті Синій кружочок з білим хрестиком у центрі)
+        wd.find_element_by_xpath("//a[contains(@ href,'/App/AppTypes')]").click()
+
+        # На сторінці Створення нової заяви, на переліку заяв натискаємо «Заяви щодо провадження діяльності з імпорту лікарських засобів (крім активних фармацевтичних інгредієнтів)»
+        wd.find_element_by_xpath("//div[@id='content']/div[2]/div/div[2]").click()
+
+        # У вище вказанному переліку заяв обираємо пункт Заява про розширення переліку місць провадження діяльності
+        wd.find_element_by_xpath("//span[contains(text(), 'Додаток 13')]").click()
+
+        time.sleep(2)
+
+    def create_mpd_import_second(self, company_name, phone_number, email, fax_number, city, index, street, adress,
+                          building):
+        wd = self.app.wd
+        # Натискаємо кнопку «Місця проваждження діяльності»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[2]/i").click()
+
+        # Натискаємо кнопку «Додати МПД» (з верху з права білий хрестик)
+        wd.find_element_by_xpath("//div[@id='content-btn']/a").click()
+
+        # Заповнюємо форми Створення провадження діяльності: Найменування структурного підрозділу (або найменування юридичної особи):* «Тест»
+        wd.find_element_by_xpath("//input[@id='Name']").send_keys(company_name)
+
+        # Заповнюємо форми Створення провадження діяльності: Номер телефону* «+380123456789»
+        wd.find_element_by_xpath("//input[@id='PhoneNumber']").send_keys(phone_number)
+
+        # Заповнюємо форми Створення провадження діяльності: E-mail* «test@test.ua»
+        wd.find_element_by_xpath("//input[@id='EMail']").send_keys(email)
+
+        # Заповнюємо форми Створення провадження діяльності: Номер факсу* «+380123456789»
+        wd.find_element_by_xpath("//input[@id='FaxNumber']").send_keys(fax_number)
+
+        # Заповнюємо форми Створення провадження діяльності: Населений пункт* «Дніпропетровська область, Дніпро»
+        wd.find_element_by_xpath("//input[@id='CityName']").send_keys(city)
+        wd.find_element_by_xpath("//div[contains(.,'Дніпро')]").click()
+
+        # Заповнюємо форми Створення провадження діяльності: Поштовий індекс* «12345»
+        wd.find_element_by_xpath("//input[@id='PostIndex']").send_keys(index)
+
+        wd.find_element_by_xpath("//input[@id='StreetName']").send_keys("Тестова")
+        time.sleep(2)
+        wd.find_element_by_xpath("//div[contains(.,'вул. Тестова Вулиця')]").click()
+
+        # Заповнюємо форми Створення провадження діяльності: Адреса місця провадження діяльності (англійською)* «Test»
+        #        wd.find_element_by_xpath("//input[@id='AdressEng']").send_keys(adress)
+
+        # Заповнюємо форми Створення провадження діяльності: Номер будинку, корпус або будівля, номер квартири або офісу* «13»
+        wd.find_element_by_xpath("//input[@id='Building']").send_keys(building)
+
+        time.sleep(2)
+
+        # Обераємо чекбокс «Складські зони (приміщення для зберігання)»
+        wd.find_element_by_xpath("//label[contains(text(), 'Складські зони (приміщення для зберігання)')]").click()
+        wd.find_element_by_xpath("//label[contains(text(), 'Умови щодо контролю якості')]").click()
+        wd.find_element_by_xpath(
+            "//label[contains(text(), 'Імпорт зареєстрованих лікарських засобів у формі “in bulk” (продукції “in bulk”)')]").click()
+        wd.find_element_by_xpath(
+            "//label[contains(text(), 'Зони здійснення видачі дозволу на випуск (реалізацію) серії лікарського засобу')]").click()
+        wd.find_element_by_xpath(
+            "//label[contains(text(), 'Імпорт зареєстрованих готових лікарських засобів')]").click()
+
+        # Натискаємо кнопку «ЗБЕРЕГТИ»
+        wd.find_element_by_xpath("//input[@id='submitBranch']").click()
+
+        time.sleep(2)
+
+        # Перевірка переходу на сторінку "Заява про отримання ліцензії на провадження діяльності"
+#        wd.find_element_by_xpath("//h1[contains(.,'Заява про отримання ліцензії на провадження діяльності')]")
+
+    def authorized_persons_import_second(self, person_name, person_middle_name, person_last_name, person_ipn, person_birthday,
+                           education, graduation_year, diplom_number, graduation_date, speciality, work_expirience,
+                           contract_number, order_number, date_contract, date_appointment, position,
+                           contact_information, comment):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Уповноважені особи»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[3]/i").click()
+
+        time.sleep(2)
+
+        # Натискаємо кнопку «Додати уповноважену особу» (з верху з права білий хрестик)
+        wd.find_element_by_xpath("//div[@id='content-btn']/a").click()
+
+        # Заповнюємо форми Створення уповноваженної особи: Ім'я* «Тест»
+        wd.find_element_by_xpath("//input[@id='Name']").send_keys(person_name)
+
+        # Заповнюємо форми Створення уповноваженної особи: По батькові* «Тестович»
+        wd.find_element_by_xpath("//input[@id='MiddleName']").send_keys(person_middle_name)
+
+        # Заповнюємо форми Створення уповноваженної особи: Прізвище* «Тестов»
+        wd.find_element_by_xpath("//input[@id='LastName']").send_keys(person_last_name)
+
+        # Заповнюємо форми Створення уповноваженної особи: ІПН «» (10 цифр)
+        wd.find_element_by_xpath("//input[@id='IPN']").send_keys(person_ipn)
+
+        # Заповнюємо форми Створення уповноваженної особи: Дата народження* «13.12.1986»
+        wd.find_element_by_xpath("//input[@id='Birthday']").send_keys(person_birthday)
+
+        # Заповнюємо форми Створення уповноваженної особи: Найменування навчального закладу «»
+        wd.find_element_by_xpath("//input[@id='EducationInstitution']").send_keys(education)
+
+        # Заповнюємо форми Створення уповноваженної особи: Рік закінчення навчального закладу «2004»
+        wd.find_element_by_xpath("//input[@id='YearOfGraduation']").send_keys(graduation_year)
+
+        # Заповнюємо форми Створення уповноваженної особи: Серія і номер диплому* «АП1312»
+        wd.find_element_by_xpath("//input[@id='NumberOfDiploma']").send_keys(diplom_number)
+
+        # Заповнюємо форми Створення уповноваженної особи: Дата видачі диплому* «13.12.2004»
+        wd.find_element_by_xpath("//input[@id='DateOfGraduation']").send_keys(graduation_date)
+
+        # Заповнюємо форми Створення уповноваженної особи: Спеціальність «Тест»
+        wd.find_element_by_xpath("//input[@id='Speciality']").send_keys(speciality)
+
+        # Заповнюємо форми Створення уповноваженної особи: Стаж роботи за фахом(місяців) «95»
+        wd.find_element_by_xpath("//input[@id='WorkExperience']").send_keys(work_expirience)
+
+        # Заповнюємо форми Створення уповноваженної особи: Номер трудового договору «12345»
+        wd.find_element_by_xpath("//input[@id='NumberOfContract']").send_keys(contract_number)
+
+        # Заповнюємо форми Створення уповноваженної особи: Номер наказу про покладання обов'язків 23456
+        wd.find_element_by_xpath("//input[@id='OrderNumber']").send_keys(order_number)
+
+        # Заповнюємо форми Створення уповноваженної особи: Дата трудового договору «14.12.2004»
+        wd.find_element_by_xpath("//input[@id='DateOfContract']").send_keys(date_contract)
+
+        # Заповнюємо форми Створення уповноваженної особи: Дата наказу про покладання обовєязків «14.12.2004»
+        wd.find_element_by_xpath("//input[@id='DateOfAppointment']").send_keys(date_appointment)
+
+        # Заповнюємо форми Створення уповноваженної особи: Посада «Тест директор»
+        wd.find_element_by_xpath("//input[@id='NameOfPosition']").send_keys(position)
+
+        # Заповнюємо форми Створення уповноваженної особи: Контактна інформація «12345»
+        wd.find_element_by_xpath("//input[@id='ContactInformation']").send_keys(contact_information)
+
+        # Заповнюємо форми Створення уповноваженної особи: Оберіть МПД «Тест1»
+        wd.find_element_by_xpath("//button[@type='button']").click()
+        wd.find_element_by_xpath("//div[@id='ms-list-1']/div/ul/li/label[contains(text(), 'Тест4')]").click()
+
+        # Заповнюємо форми Створення уповноваженної особи: Коментар «Тест коментар»
+        wd.find_element_by_xpath("//input[@id='Comment']").send_keys(comment)
+
+        # Клік
+        wd.find_element_by_xpath("//div[@id='header-wrapper']").click()
+
+        time.sleep(3)
+
+        # Натискаємо кнопку «ЗБЕРЕГТИ»
+        wd.find_element_by_xpath("//input[@value='Зберегти']").click()
+
+    def dossier_file_import_second(self, version, comment, date_to, path_to_file):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Досьє»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[4]/i").click()
+
+        time.sleep(2)
+
+        # Натискаємо кнопку «Додати досьє» (з верху з права білий хрестик)
+        wd.find_element_by_xpath("//div[@id='content-btn']").click()
+
+        # Заповнюємо форми Редагування досьє: Назва/Версія «Тест досьє»
+        wd.find_element_by_xpath("//input[@id='Version']").send_keys(version)
+
+        # Заповнюємо форми Редагування досьє: Коментар «Тест коментар»
+        wd.find_element_by_xpath("//input[@id='Comment']").send_keys(comment)
+
+        # Заповнюємо форми Редагування досьє: Дата з «01.01.2019»
+        # wd.find_element_by_xpath("//input[@id='DateFrom']").send_keys('01.01.2019')
+
+        # Заповнюємо форми Редагування досьє: Дата до «19.04.2025»
+        wd.find_element_by_xpath("//input[@id='DateTo']").send_keys(date_to)
+
+        # Заповнюємо форми Редагування досьє: Оберіть МПД «Тест1»
+        wd.find_element_by_xpath("//button[@type='button']").click()
+        wd.find_element_by_xpath("//div[@id='ms-list-1']/div/ul/li/label[contains(text(), 'Тест4')]").click()
+        wd.find_element_by_xpath("//button[@type='button']").click()
+
+        # Заповнюємо форми Редагування досьє: На формі «Додайте файли до картки досьє» натисувємо кнопку прикріпити файл (з ліва синій квадрат з білою скріпкою)
+        # потім натискаємо кнопку збереження файлу (з права синій квадрат з зображенням дискети білого кольору)
+        wd.find_element_by_xpath("//input[@id='files']").send_keys(path_to_file)
+        wd.find_element_by_xpath("//div[@id='uploadForm']/form/div[3]/button/i").click()
+
+        # Натискаємо кнопку «ЗБЕРЕГТИ»
+        wd.find_element_by_xpath("//input[@value='Зберегти']").click()
+
+        time.sleep(2)
+
+    def completeness_check_import_second(self):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Досьє»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[5]/i").click()
+
+        # Перевірка комплектності поданих документів не виявила ніяких помилок
+        wd.find_element_by_xpath(
+            "//p[contains(.,'Перевірка комплектності поданих документів не виявила ніяких помилок')]")
+
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[1]/i").click()
+
+        time.sleep(2)
+
+    def notifications_and_license_terms_import_second(self, comment):
+        wd = self.app.wd
+        # Натискаємо кнопку «Досьє»
+
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
+
+        wd.find_element_by_xpath("//label[contains(.,'Прошу за місцем/місцями провадження господарської')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'Поштовим відправленням за місцезнаходженням')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'З порядком отримання ліцензії ознайомлений')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'Згоден на обробку персональних даних')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'На виконання вимог Закону України')]").click()
+
+        wd.find_element_by_xpath("//textarea[@id='Comment']").send_keys(comment)
+
+        wd.find_element_by_xpath("//button[@id='scroll-top']").click()
+
+        time.sleep(2)
+
+    def submit_application_import_second(self, path_to_key, password):
+        wd = self.app.wd
+        # Натискаємо кнопку «Подання заяви»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[7]/i").click()
+
+        # Натискаємо кнопку «Підписати і відправити заяву»
+        wd.find_element_by_xpath("//a[@id='signButton']/span[2]").click()
+
+        time.sleep(3)
+
+
+
+#        alert = driver.switch_to_alert()
+#        alert.accept()
+
+#        alert = wd.switch_to_alert()
+#        alert.accept()
+##############################################################        wd.switch_to_alert().accept()
+#        wd.switch_to_alert().accept()
+
+        time.sleep(7)
+
+
+        # Заповнюємо форми Ідентифікація за електронним підписом: Встановлення особистого ключа (ще раз): Оберіть ЦСК «АЦСК ПАТ КБ «ПРИВАТБАНК
+#        wd.find_element_by_xpath("//div[@id='MainPageMenuPKeyPage']/div[2]/div[2]/div/div").click()
+        wd.find_element_by_xpath("//select[@id='CAsServersSelect']").click()
+
+        # wd.find_element_by_xpath("//span[contains(.,'Україна')]").click()
+        # //li[@class='select-item'][14]
+
+        # wd.find_element_by_xpath("//li[@class='select-item'][14]").click()
+
+        wd.find_element_by_xpath("//option[contains(.,'Україна')]").click()
+
+        # Заповнюємо форми Ідентифікація за електронним підписом: Встановлення особистого ключа (ще раз): ОБЕРІТЬ ФАЙЛ З ОСОБИСТИМ КЛЮЧЕМ (ЗАЗВИЧАЙ З ІМ'ЯМ KEY-6.DAT) ТА ВКАЖІТЬ ПАРОЛЬ ЗАХИСТУ
+        # Path
+        wd.find_element_by_xpath("//input[@id='PKeyFileInput']").send_keys(path_to_key)
+        # Пароль захисту ключа: «password»
+        wd.find_element_by_xpath("//input[@id='PKeyPassword']").send_keys(password)
+        # Натискаємо кнопку «Зчитати»
+        wd.find_element_by_xpath("//button[@id='PKeyReadButton']").click()
+        time.sleep(10)
+        # ЩОБ ПІДПИСАТИ ТА ВІДПРАВИТИ ЗАЯВУ, ДАЙТЕ ЗГОДУ НА ПІДПИСАННЯ НАСТУПНИХ ФАЙЛІВ:
+        # Обераємо Чекбокс  «Вибрати всі файли»
+        # wd.find_element_by_xpath("//div[@id='MainPageMenuPKeyPage']/div[4]/div[2]/label").click()
+
+        # Натискаємо кнопку «Підписати»
+        wd.find_element_by_xpath("//button[@id='SignDataButton']").click()
+
+        time.sleep(5)
+
+##################################################################################################################################################################################  Import 15
+
+    def create_import_third_application(self):
+        wd = self.app.wd
+        # У меню з ліва натискаємо пункт «Подання заяв»
+        wd.find_element_by_xpath("//ul[@id='aside-menu']/li[2]/div/a/div/span").click()
+
+        #        time.sleep(3)
+        # Натискаємо кнопку створити заяву (У правому верхньому куті Синій кружочок з білим хрестиком у центрі)
+        wd.find_element_by_xpath("//a[contains(@ href,'/App/AppTypes')]").click()
+
+        # На сторінці Створення нової заяви, на переліку заяв натискаємо «Заяви щодо провадження діяльності з імпорту лікарських засобів (крім активних фармацевтичних інгредієнтів)»
+        wd.find_element_by_xpath("//div[@id='content']/div[2]/div/div[2]").click()
+
+        # У вище вказанному переліку заяв обираємо пункт Заява про розширення переліку місць провадження діяльності
+        wd.find_element_by_xpath("//a[contains(text(), 'Заява про зміну (доповнення) переліку лікарських засобів, що імпортує ліцензіат')]").click()
+
+        time.sleep(2)
+
+    def information_about_medicines_import_third(self):
+        wd = self.app.wd
+        # Натискаємо кнопку «Інформація про лікарськи засоби»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[3]").click()
+
+        # Натискаємо кнопку «Завантажити перелік лікарських засобів» (з верху з права білий хрестик)
+        wd.find_element_by_xpath("//div[@id='content-btn']/a[2]").click()
+        wd.find_element_by_xpath("//div[@id='content-btn']/a[2]").send_keys('C:/ooooooooooo.xlsx')
+
+        time.sleep(20)
+
+    def notifications_and_license_terms_import_third(self, comment):
+        wd = self.app.wd
+        # Натискаємо кнопку «Досьє»
+
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
+
+        wd.find_element_by_xpath("//label[contains(.,'Прошу за місцем/місцями провадження господарської')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'Поштовим відправленням за місцезнаходженням')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'В електронному вигляді')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'З порядком отримання ліцензії ознайомлений')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'Згоден на обробку персональних даних')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'На виконання вимог Закону України')]").click()
+
+        wd.find_element_by_xpath("//textarea[@id='Comment']").send_keys(comment)
+
+        wd.find_element_by_xpath("//button[@id='scroll-top']").click()
+
+        time.sleep(2)
+
+##################################################################################################################################################################################  Import 15
+
+    def create_import_fourth_application(self):
+        wd = self.app.wd
+        # У меню з ліва натискаємо пункт «Подання заяв»
+        wd.find_element_by_xpath("//ul[@id='aside-menu']/li[2]/div/a/div/span").click()
+
+        #        time.sleep(3)
+        # Натискаємо кнопку створити заяву (У правому верхньому куті Синій кружочок з білим хрестиком у центрі)
+        wd.find_element_by_xpath("//a[contains(@ href,'/App/AppTypes')]").click()
+
+        # На сторінці Створення нової заяви, на переліку заяв натискаємо «Заяви щодо провадження діяльності з імпорту лікарських засобів (крім активних фармацевтичних інгредієнтів)»
+        wd.find_element_by_xpath("//div[@id='content']/div[2]/div/div[2]").click()
+
+        # У вище вказанному переліку заяв обираємо пункт Заява про розширення переліку місць провадження діяльності
+        wd.find_element_by_xpath("//span[contains(text(), 'Додаток 17')]").click()
+
+        time.sleep(2)
+
+    def delete_mpd_import_fourth(self):
+        wd = self.app.wd
+        # Натискаємо кнопку «Місця проваждження діяльності»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[2]/i").click()
+
+        # Обираємо чекбокс першого у списку МПД
+        wd.find_element_by_xpath("//label[@class='control-label'][1]").click()
+
+        time.sleep(2)
+
+    def completeness_check_import_fourth(self):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Досьє»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[3]/i").click()
+
+        # Перевірка комплектності поданих документів не виявила ніяких помилок
+        wd.find_element_by_xpath(
+            "//p[contains(.,'Перевірка комплектності поданих документів не виявила ніяких помилок')]")
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[1]/i").click()
+
+        time.sleep(2)
+
+    def notifications_and_license_terms_import_fourth(self, comment):
+        wd = self.app.wd
+        # Натискаємо кнопку «Досьє»
+
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[4]/i").click()
+
+        time.sleep(2)
+
+        wd.find_element_by_xpath("//label[contains(.,'В електронному вигляді')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'З порядком отримання ліцензії ознайомлений')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'Згоден на обробку персональних даних')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'На виконання вимог Закону України')]").click()
+
+        wd.find_element_by_xpath("//textarea[@id='Comment']").send_keys(comment)
+
+        wd.find_element_by_xpath("//button[@id='scroll-top']").click()
+
+        time.sleep(2)
+
+    def submit_application_import_fourth(self, path_to_key, password):
+        wd = self.app.wd
+        # Натискаємо кнопку «Подання заяви»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[5]/i").click()
+
+        # Натискаємо кнопку «Підписати і відправити заяву»
+        wd.find_element_by_xpath("//a[@id='signButton']/span[2]").click()
+
+        time.sleep(3)
+
+
+
+#        alert = driver.switch_to_alert()
+#        alert.accept()
+
+#        alert = wd.switch_to_alert()
+#        alert.accept()
+##############################################################        wd.switch_to_alert().accept()
+#        wd.switch_to_alert().accept()
+
+        time.sleep(7)
+
+
+        # Заповнюємо форми Ідентифікація за електронним підписом: Встановлення особистого ключа (ще раз): Оберіть ЦСК «АЦСК ПАТ КБ «ПРИВАТБАНК
+#        wd.find_element_by_xpath("//div[@id='MainPageMenuPKeyPage']/div[2]/div[2]/div/div").click()
+        wd.find_element_by_xpath("//select[@id='CAsServersSelect']").click()
+
+        # wd.find_element_by_xpath("//span[contains(.,'Україна')]").click()
+        # //li[@class='select-item'][14]
+
+        # wd.find_element_by_xpath("//li[@class='select-item'][14]").click()
+
+        wd.find_element_by_xpath("//option[contains(.,'Україна')]").click()
+
+        # Заповнюємо форми Ідентифікація за електронним підписом: Встановлення особистого ключа (ще раз): ОБЕРІТЬ ФАЙЛ З ОСОБИСТИМ КЛЮЧЕМ (ЗАЗВИЧАЙ З ІМ'ЯМ KEY-6.DAT) ТА ВКАЖІТЬ ПАРОЛЬ ЗАХИСТУ
+        # Path
+        wd.find_element_by_xpath("//input[@id='PKeyFileInput']").send_keys(path_to_key)
+        # Пароль захисту ключа: «password»
+        wd.find_element_by_xpath("//input[@id='PKeyPassword']").send_keys(password)
+        # Натискаємо кнопку «Зчитати»
+        wd.find_element_by_xpath("//button[@id='PKeyReadButton']").click()
+        time.sleep(10)
+        # ЩОБ ПІДПИСАТИ ТА ВІДПРАВИТИ ЗАЯВУ, ДАЙТЕ ЗГОДУ НА ПІДПИСАННЯ НАСТУПНИХ ФАЙЛІВ:
+        # Обераємо Чекбокс  «Вибрати всі файли»
+        # wd.find_element_by_xpath("//div[@id='MainPageMenuPKeyPage']/div[4]/div[2]/label").click()
+
+        # Натискаємо кнопку «Підписати»
+        wd.find_element_by_xpath("//button[@id='SignDataButton']").click()
+
+        time.sleep(5)
+
+##################################################################################################################################################################################  Import 17
