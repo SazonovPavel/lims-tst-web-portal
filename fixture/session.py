@@ -51,7 +51,16 @@ class SessionHelper:
         wd.find_element_by_xpath("//form[@id='formAuthJSRequest']/fieldset/div[3]/div/div[2]/div/button").click()
         time.sleep(3)
 
-        wd.switch_to_alert().accept()
+#        if (wd.find_element_by_xpath("//*[text()[contains(.,'No Sales Found')]")).Enabled)
+#        {
+#        wd.switch_to_alert().accept()
+#        }
+
+        alert = wd.switch_to.alert
+        assert "Виникла помилка при зчитуванні особистого ключа. Опис помилки: файл з особистим ключем не обрано" in alert.text
+        alert.accept()
+
+#        wd.switch_to_alert().accept()
 
     def login_third(self, password, path_to_key):
         wd = self.app.wd
@@ -77,7 +86,11 @@ class SessionHelper:
         wd.find_element_by_xpath("//form[@id='formAuthJSRequest']/fieldset/div[3]/div/div[2]/div/button").click()
         time.sleep(3)
 
-        wd.switch_to_alert().accept()
+        alert = wd.switch_to.alert
+        assert "Виникла помилка при зчитуванні особистого ключа. Опис помилки: не вказано пароль доступу до особистого ключа" in alert.text
+        alert.accept()
+
+#        wd.switch_to_alert().accept()
 
     def login_fourth(self, password):
         wd = self.app.wd
@@ -96,7 +109,11 @@ class SessionHelper:
         wd.find_element_by_xpath("//form[@id='formAuthJSRequest']/fieldset/div[3]/div/div[2]/div/button").click()
         time.sleep(3)
 
-        wd.switch_to_alert().accept()
+        alert = wd.switch_to.alert
+        assert "Виникла помилка при зчитуванні особистого ключа. Опис помилки: файл з особистим ключем не обрано" in alert.text
+        alert.accept()
+
+#        wd.switch_to_alert().accept()
 
     def login_fifth(self, password, path_to_key):
         wd = self.app.wd
@@ -118,7 +135,11 @@ class SessionHelper:
         wd.find_element_by_xpath("//form[@id='formAuthJSRequest']/fieldset/div[3]/div/div[2]/div/button").click()
         time.sleep(3)
 
-        wd.switch_to_alert().accept()
+        alert = wd.switch_to.alert
+        assert "Сертифікат не знайдено(51)" in alert.text
+        alert.accept()
+
+#        wd.switch_to_alert().accept()
 
     def login_sixth(self, password, path_to_key):
         wd = self.app.wd
@@ -144,7 +165,11 @@ class SessionHelper:
         wd.find_element_by_xpath("//form[@id='formAuthJSRequest']/fieldset/div[3]/div/div[2]/div/button").click()
         time.sleep(3)
 
-        wd.switch_to_alert().accept()
+        alert = wd.switch_to.alert
+        assert "Сертифікат не знайдено(51)" in alert.text
+        alert.accept()
+
+#        wd.switch_to_alert().accept()
 
     def login_seventh(self, password, path_to_key):
         wd = self.app.wd
@@ -170,7 +195,11 @@ class SessionHelper:
         wd.find_element_by_xpath("//form[@id='formAuthJSRequest']/fieldset/div[3]/div/div[2]/div/button").click()
         time.sleep(3)
 
-        wd.switch_to_alert().accept()
+        alert = wd.switch_to.alert
+        assert "Виникла помилка при відкритті особистого ключа (невірний пароль чи ключ пошкоджений)(24)" in alert.text
+        alert.accept()
+
+#        wd.switch_to_alert().accept()
 
 
     def login_eighth(self, password):
@@ -194,7 +223,11 @@ class SessionHelper:
         wd.find_element_by_xpath("//form[@id='formAuthJSRequest']/fieldset/div[3]/div/div[2]/div/button").click()
         time.sleep(3)
 
-        wd.switch_to_alert().accept()
+        alert = wd.switch_to.alert
+        assert "Виникла помилка при зчитуванні особистого ключа. Опис помилки: файл з особистим ключем не обрано" in alert.text
+        alert.accept()
+
+#        wd.switch_to_alert().accept()
 
     def login_tenth(self, password, path_to_key):
         wd = self.app.wd

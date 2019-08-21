@@ -772,7 +772,7 @@ class FirstApplicationHelper:
         wd.find_element_by_xpath("//div[contains(.,'Тестова Вулиця')]").click()
 
         # Заповнюємо форми Створення провадження діяльності: Адреса місця провадження діяльності (англійською)* «Test»
-#        wd.find_element_by_xpath("//input[@id='AdressEng']").send_keys(adress)
+        wd.find_element_by_xpath("//input[@id='AdressEng']").send_keys(adress)
 
         # Заповнюємо форми Створення провадження діяльності: Номер будинку, корпус або будівля, номер квартири або офісу* «13»
         wd.find_element_by_xpath("//input[@id='Building']").send_keys(building)
