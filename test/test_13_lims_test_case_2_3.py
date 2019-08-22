@@ -1,6 +1,6 @@
 #ЗАЯВА ПРО ВНЕСЕННЯ ДО ЄДР ВІДОМОСТЕЙ ПРО МІСЦЕ ПРОВАДЖЕННЯ ГОСПОДАРСЬКОЇ ДІЯЛЬНОСТІ - ДОДАВАННЯ ІНФОРМАЦІЇ ПРО МПД(ВИРОБНИЦТВО)
 
-def test_5_lims_test_case_2_3(app):
+def test_13_lims_test_case_2_3(app):
     app.session.login(password='111',
                       path_to_key='C:/98745612_7878789898_DU180323123055.ZS2')
     app.first_application.create_third_application()

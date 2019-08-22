@@ -1,6 +1,6 @@
 # Заява про зміну уповноваженних осіб
 
-def test_8_lims_test_case_2_6(app):
+def test_16_lims_test_case_2_6(app):
     app.session.login(password='111',
                       path_to_key='C:/98745612_7878789898_DU180323123055.ZS2')
 

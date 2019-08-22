@@ -1,7 +1,7 @@
 # Заява про зміну контрактних контрагентів
 
 
-def test_9_lims_test_case_2_7(app):
+def test_17_lims_test_case_2_7(app):
     app.session.login(password='111',
                       path_to_key='C:/98745612_7878789898_DU180323123055.ZS2')
 
