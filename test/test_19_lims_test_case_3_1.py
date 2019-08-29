@@ -1,6 +1,11 @@
 # ЗАЯВА ПРО ОТРИМАННЯ ЛІЦЕНЗІЇ НА ПРОВАДЖЕННЯ ДІЯЛЬНОСТІ (імпорт)  3 МПД 2 КК 3 УО 3 Досье
 
-def test_13_lims_test_case_3_1(app):
+# Есть заминка одна
+# Нужно в ручную выбирать список товаров, которые планируем импортировать
+# Этот фаил тоже храниться на диске C
+
+
+def test_19_lims_test_case_3_1(app):
     app.session.login(password='111',
                       path_to_key='C:/98745612_7878789898_DU180323123055.ZS2')
     app.first_application.create_import_first_application(pib="Ступка Богдан Сильвестрович",
@@ -8,6 +13,7 @@ def test_13_lims_test_case_3_1(app):
                                          phone_number="+380123456789",
                                          fax_number="+380123456 789",
                                          city="Дніпро",
+
                                          flat="13",
                                          street="Тестова вулиця",
                                          index="12345",
@@ -44,11 +50,6 @@ def test_13_lims_test_case_3_1(app):
                            adress='Test',
                            building='13')
     app.first_application.information_about_medicines()
-
-
-
-
-
 
     app.first_application.authorized_persons(person_name='Тест',
                                    person_middle_name='Тестович',
@@ -113,7 +114,8 @@ def test_13_lims_test_case_3_1(app):
                              comment='Тест коментар',
                              date_to='19.04.2025',
                              path_to_file='C:/masloy.png')
-    app.first_application.completeness_check()
+    app.first_application.completeness_check_import()
+
     app.first_application.notifications_and_license_terms(comment='Коментар тест')
     app.first_application.submit_application(path_to_key='C:/98745612_7878789898_DU180323123055.ZS2',
                                    password='111')

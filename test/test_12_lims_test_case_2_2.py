@@ -37,7 +37,8 @@ def test_12_lims_test_case_2_2(app):
                              comment='Тест коментар',
                              date_to='19.04.2025',
                              path_to_file='C:/masloy.png')
-    app.first_application.completeness_check()
+    app.first_application.completeness_check_second()
+    app.first_application.add_files_second(path_to_file='C:/masloy.png')
     app.first_application.notifications_and_license_terms_second(comment='Коментар тест')
     app.first_application.submit_application(path_to_key='C:/98745612_7878789898_DU180323123055.ZS2',
                                              password='111')

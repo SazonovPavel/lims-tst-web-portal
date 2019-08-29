@@ -6,6 +6,8 @@ def test_18_lims_test_case_2_8(app):
 
     app.first_application.create_tenth_application()
 
+    app.first_application.add_files_tenth(path_to_file='C:/masloy.png')
+
     app.first_application.notifications_and_license_terms_tenth(comment='Коментар тест')
 
     app.first_application.submit_application_tenth(path_to_key='C:/98745612_7878789898_DU180323123055.ZS2',

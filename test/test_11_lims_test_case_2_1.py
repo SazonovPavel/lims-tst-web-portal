@@ -116,6 +116,8 @@ def test_11_lims_test_case_2_1(app):
                              comment='Тест коментар',
                              date_to='19.04.2025',
                              path_to_file='C:/masloy.png')
+    app.first_application.add_files(path_to_file='C:/masloy.png')
+
     app.first_application.completeness_check()
     app.first_application.notifications_and_license_terms(comment='Коментар тест')
     app.first_application.submit_application(path_to_key='C:/98745612_7878789898_DU180323123055.ZS2',

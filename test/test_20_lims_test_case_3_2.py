@@ -1,6 +1,6 @@
-# ЗАЯВА ПРО розширення переліку МПД
+# ЗАЯВА ПРО розширення переліку МПД (Імпорт)
 
-def test_14_lims_test_case_3_2(app):
+def test_20_lims_test_case_3_2(app):
     app.session.login(password='111',
                       path_to_key='C:/98745612_7878789898_DU180323123055.ZS2')
     app.first_application.create_import_second_application()
@@ -38,6 +38,7 @@ def test_14_lims_test_case_3_2(app):
                              date_to='19.04.2025',
                              path_to_file='C:/masloy.png')
     app.first_application.completeness_check_import_second()
+    app.first_application.add_files_import_second(path_to_file='C:/masloy.png')
     app.first_application.notifications_and_license_terms_import_second(comment='Коментар тест')
     app.first_application.submit_application_import_second(path_to_key='C:/98745612_7878789898_DU180323123055.ZS2',
                                    password='111')

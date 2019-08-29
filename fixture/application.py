@@ -15,20 +15,19 @@ class Application:
 
     def open_home_page(self):
         wd = self.wd
-# Dev
-#        wd.get('http://lims-dev-web-portal.bitsoft.com.ua')
+
 
 # Prod
 #        wd.get('http://lims-web-portal.bitsoft.group/')
 
 # Stage portal
 #        wd.get('http://stage-diklz-portal.bitsoft.com.ua')
+
 # Test portal
         wd.get('http://test-diklz-portal.bitsoft.com.ua/')
+
 # Dev portal
 #        wd.get('http://dev-diklz-portal.bitsoft.com.ua')
-
-
 
     def destroy(self):
         self.wd.quit()

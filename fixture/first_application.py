@@ -623,11 +623,28 @@ class FirstApplicationHelper:
         # Перевірка переходу на сторінку "Заява про отримання ліцензії на провадження діяльності"
         wd.find_element_by_xpath("//h1[contains(.,'Заява про отримання ліцензії на провадження діяльності')]")
 
+    def add_files(self, path_to_file):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Завантаження додаткових файлів»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
+
+        time.sleep(2)
+
+        wd.find_element_by_xpath("//input[@id='files']").send_keys(path_to_file)
+        wd.find_element_by_xpath("//div[@id='uploadForm']/form/div[3]/button/i").click()
+
+        time.sleep(2)
+
+        # Перевірка переходу на сторінку "Заява про отримання ліцензії на провадження діяльності"
+        wd.find_element_by_xpath("//h1[contains(.,'Заява про отримання ліцензії на провадження діяльності')]")
+
+
     def completeness_check(self):
         wd = self.app.wd
 
         # Натискаємо кнопку «Досьє»
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[7]/i").click()
 
         # Перевірка комплектності поданих документів не виявила ніяких помилок
         wd.find_element_by_xpath(
@@ -641,18 +658,21 @@ class FirstApplicationHelper:
         wd = self.app.wd
         # Натискаємо кнопку «Досьє»
 
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[7]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[8]/i").click()
 
         # wd.find_element_by_css_selector(".icon-msg-envelope").click()
         # Обераємо наступні чекбокси: «Прошу за місцем/місцями провадження господарської діяльності провести перевірку матеріально-технічної бази,
         # кваліфікованого персоналу, а також умов щодо контролю якості лікарських засобів, що вироблятимуться»
         # Додатково до електронної форми бажаю отримати ліцензію на паперовому носії: «Нарочно»
-        wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div/label").click()
-        wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div[2]/div[2]/label").click()
-        wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div[3]/div[2]/label").click()
-        wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div[4]/div[2]/label").click()
-        wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div[4]/div[3]/label").click()
-        wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div[4]/div[4]/label").click()
+
+        wd.find_element_by_xpath("//label[contains(.,'Прошу за місцем/місцями провадження господарської діяльності')]").click()
+        wd.find_element_by_xpath(
+            "//label[contains(.,'Поштовим відправленням за місцезнаходженням')]").click()
+        wd.find_element_by_xpath(
+            "//label[contains(.,'В електронному вигляді')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'З порядком отримання ліцензії ознайомлений')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'Згоден на обробку персональних даних')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'На виконання вимог Закону України')]").click()
         wd.find_element_by_xpath("//textarea[@id='Comment']").send_keys(comment)
 
         wd.find_element_by_xpath("//button[@id='scroll-top']").click()
@@ -662,7 +682,7 @@ class FirstApplicationHelper:
     def submit_application(self, path_to_key, password):
         wd = self.app.wd
         # Натискаємо кнопку «Подання заяви»
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[8]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[9]/i").click()
 
         # Натискаємо кнопку «Підписати і відправити заяву»
         wd.find_element_by_xpath("//a[@id='signButton']/span[2]").click()
@@ -870,7 +890,7 @@ class FirstApplicationHelper:
         wd.find_element_by_xpath("//input[@value='Зберегти']").click()
 
         # Перевірка переходу на сторінку "Заява про отримання ліцензії на провадження діяльності"
-        wd.find_element_by_xpath("//h1[contains(.,'Додавання МПД')]")
+        # wd.find_element_by_xpath("//h1[contains(.,'Додавання МПД')]")
 
 
     def dossier_file_second(self, version, comment, date_to, path_to_file):
@@ -913,7 +933,37 @@ class FirstApplicationHelper:
         time.sleep(2)
 
         # Перевірка переходу на сторінку "Заява про отримання ліцензії на провадження діяльності"
-        wd.find_element_by_xpath("//h1[contains(.,'Додавання МПД')]")
+        # wd.find_element_by_xpath("//h1[contains(.,'Додавання МПД')]")
+
+    def completeness_check_second(self):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Досьє»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
+
+        # Перевірка комплектності поданих документів не виявила ніяких помилок
+        wd.find_element_by_xpath(
+            "//p[contains(.,'Перевірка комплектності поданих документів не виявила ніяких помилок')]")
+
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[1]/i").click()
+
+        time.sleep(2)
+
+    def add_files_second(self, path_to_file):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Завантаження додаткових файлів»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[7]/i").click()
+
+        time.sleep(2)
+
+        wd.find_element_by_xpath("//input[@id='files']").send_keys(path_to_file)
+        wd.find_element_by_xpath("//div[@id='uploadForm']/form/div[3]/button/i").click()
+
+        time.sleep(2)
+
+        # Перевірка переходу на сторінку "Заява про отримання ліцензії на провадження діяльності"
+        wd.find_element_by_xpath("//h1[contains(.,'Заява про отримання ліцензії на провадження діяльності')]")
 
     def notifications_and_license_terms_second(self, comment):
         wd = self.app.wd
@@ -921,18 +971,21 @@ class FirstApplicationHelper:
 
         time.sleep(2)
 
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[7]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[8]/i").click()
 
         # wd.find_element_by_css_selector(".icon-msg-envelope").click()
         # Обераємо наступні чекбокси: «Прошу за місцем/місцями провадження господарської діяльності провести перевірку матеріально-технічної бази,
         # кваліфікованого персоналу, а також умов щодо контролю якості лікарських засобів, що вироблятимуться»
         # Додатково до електронної форми бажаю отримати ліцензію на паперовому носії: «Нарочно»
-        wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div/label").click()
-        wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div[2]/div[2]/label").click()
-        wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div[3]/div[2]/label").click()
-        wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div[3]/div[3]/label").click()
-        wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div[3]/div[4]/label").click()
-        # wd.find_element_by_xpath("//div[@id='content']/div[2]/div[7]/div[3]/div/div[4]/div[4]/label").click()
+
+        wd.find_element_by_xpath("//label[contains(.,'Прошу за місцем/місцями провадження господарської діяльності')]").click()
+        wd.find_element_by_xpath(
+            "//label[contains(.,'Поштовим відправленням за місцезнаходженням')]").click()
+        wd.find_element_by_xpath(
+            "//label[contains(.,'В електронному вигляді')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'З порядком отримання ліцензії ознайомлений')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'Згоден на обробку персональних даних')]").click()
+        wd.find_element_by_xpath("//label[contains(.,'На виконання вимог Закону України')]").click()
         wd.find_element_by_xpath("//textarea[@id='Comment']").send_keys(comment)
 
         wd.find_element_by_xpath("//button[@id='scroll-top']").click()
@@ -972,12 +1025,25 @@ class FirstApplicationHelper:
 
         time.sleep(1)
 
+    def add_files_third(self, path_to_file):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Завантаження додаткових файлів»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[5]/i").click()
+
+        time.sleep(2)
+
+        wd.find_element_by_xpath("//input[@id='files']").send_keys(path_to_file)
+        wd.find_element_by_xpath("//div[@id='uploadForm']/form/div[3]/button/i").click()
+
+        time.sleep(2)
+
     def notifications_and_license_terms_third(self, comment):
         wd = self.app.wd
 
         time.sleep(1)
 
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[5]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
 
         # wd.find_element_by_css_selector(".icon-msg-envelope").click()
         # Обераємо наступні чекбокси: «Прошу за місцем/місцями провадження господарської діяльності провести перевірку матеріально-технічної бази,
@@ -997,7 +1063,7 @@ class FirstApplicationHelper:
     def submit_application_third(self, path_to_key, password):
         wd = self.app.wd
         # Натискаємо кнопку «Подання заяви»
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[7]/i").click()
 
         # Натискаємо кнопку «Підписати і відправити заяву»
         wd.find_element_by_xpath("//a[@id='signButton']/span[2]").click()
@@ -1057,12 +1123,26 @@ class FirstApplicationHelper:
 
         time.sleep(1)
 
+    def add_files_fourth(self, path_to_file):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Завантаження додаткових файлів»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[4]/i").click()
+
+        time.sleep(2)
+
+        wd.find_element_by_xpath("//input[@id='files']").send_keys(path_to_file)
+        wd.find_element_by_xpath("//div[@id='uploadForm']/form/div[3]/button/i").click()
+
+        time.sleep(2)
+
+
     def notifications_and_license_terms_fourth(self, comment):
         wd = self.app.wd
 
         time.sleep(1)
 
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[4]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[5]/i").click()
 
         # Обераємо наступні чекбокси: «Про рішення, прийняте за результатами розгляду цієї заяви, прошу повідомити:»
         # «Нарочно»
@@ -1079,7 +1159,7 @@ class FirstApplicationHelper:
     def submit_application_fourth(self, path_to_key, password):
         wd = self.app.wd
         # Натискаємо кнопку «Подання заяви»
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[5]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
 
         # Натискаємо кнопку «Підписати і відправити заяву»
         wd.find_element_by_xpath("//a[@id='signButton']/span[2]").click()
@@ -1252,12 +1332,25 @@ class FirstApplicationHelper:
         # У вище вказанному переліку заяв обираємо пункт «Заява про звуження переліку лікарських форм» (додаток 16)
         wd.find_element_by_xpath("//div[@id='content']/div[2]/div/div/div[2]/a[10]").click()
 
+    def add_files_tenth(self, path_to_file):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Завантаження додаткових файлів»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[2]/i").click()
+
+        time.sleep(2)
+
+        wd.find_element_by_xpath("//input[@id='files']").send_keys(path_to_file)
+        wd.find_element_by_xpath("//div[@id='uploadForm']/form/div[3]/button/i").click()
+
+        time.sleep(2)
+
     def notifications_and_license_terms_tenth(self, comment):
         wd = self.app.wd
 
         time.sleep(1)
 
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[2]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[3]/i").click()
 
         # Обераємо наступні чекбокси: «Про рішення, прийняте за результатами розгляду цієї заяви, прошу повідомити:»
         # «Нарочно»
@@ -1274,7 +1367,7 @@ class FirstApplicationHelper:
     def submit_application_tenth(self, path_to_key, password):
         wd = self.app.wd
         # Натискаємо кнопку «Подання заяви»
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[3]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[4]/i").click()
 
         # Натискаємо кнопку «Підписати і відправити заяву»
         wd.find_element_by_xpath("//a[@id='signButton']/span[2]").click()
@@ -1304,7 +1397,7 @@ class FirstApplicationHelper:
 
         time.sleep(5)
 
-##################################################################################################################################################################################  Import 13
+##################################################################################################################################################################################  Import 19
     def create_import_first_application(self, pib, email, phone_number, fax_number, city, flat, street, index,
                                  number_national_account, requisits_number_national_account, number_foreign_account,
                                  requisits_number_forein_account, duns_number):
@@ -1421,9 +1514,9 @@ class FirstApplicationHelper:
         # Обераємо чекбокс «Складські зони (приміщення для зберігання)»
         wd.find_element_by_xpath("//label[contains(text(), 'Складські зони (приміщення для зберігання)')]").click()
         wd.find_element_by_xpath("//label[contains(text(), 'Умови щодо контролю якості')]").click()
-        wd.find_element_by_xpath("//label[contains(text(), 'Імпорт зареєстрованих лікарських засобів у формі “in bulk” (продукції “in bulk”)')]").click()
+        # wd.find_element_by_xpath("//label[contains(text(), 'Імпорт зареєстрованих лікарських засобів у формі “in bulk” (продукції “in bulk”)')]").click()
         wd.find_element_by_xpath("//label[contains(text(), 'Зони здійснення видачі дозволу на випуск (реалізацію) серії лікарського засобу')]").click()
-        wd.find_element_by_xpath("//label[contains(text(), 'Імпорт зареєстрованих готових лікарських засобів')]").click()
+        # wd.find_element_by_xpath("//label[contains(text(), 'Імпорт зареєстрованих готових лікарських засобів')]").click()
 
         # Натискаємо кнопку «ЗБЕРЕГТИ»
         wd.find_element_by_xpath("//input[@id='submitBranch']").click()
@@ -1441,6 +1534,20 @@ class FirstApplicationHelper:
         wd.find_element_by_xpath("//div[@id='content-btn']/a[3]").send_keys('C:/ooooooooooo.xlsx')
 
         time.sleep(20)
+
+    def completeness_check_import(self):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Досьє»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
+
+        # Перевірка комплектності поданих документів не виявила ніяких помилок
+        wd.find_element_by_xpath(
+            "//p[contains(.,'Перевірка комплектності поданих документів не виявила ніяких помилок')]")
+
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[1]/i").click()
+
+        time.sleep(2)
 
 ##################################################################################################################################################################################  Import 14
 
@@ -1505,11 +1612,7 @@ class FirstApplicationHelper:
         wd.find_element_by_xpath("//label[contains(text(), 'Складські зони (приміщення для зберігання)')]").click()
         wd.find_element_by_xpath("//label[contains(text(), 'Умови щодо контролю якості')]").click()
         wd.find_element_by_xpath(
-            "//label[contains(text(), 'Імпорт зареєстрованих лікарських засобів у формі “in bulk” (продукції “in bulk”)')]").click()
-        wd.find_element_by_xpath(
             "//label[contains(text(), 'Зони здійснення видачі дозволу на випуск (реалізацію) серії лікарського засобу')]").click()
-        wd.find_element_by_xpath(
-            "//label[contains(text(), 'Імпорт зареєстрованих готових лікарських засобів')]").click()
 
         # Натискаємо кнопку «ЗБЕРЕГТИ»
         wd.find_element_by_xpath("//input[@id='submitBranch']").click()
@@ -1651,11 +1754,24 @@ class FirstApplicationHelper:
 
         time.sleep(2)
 
+    def add_files_import_second(self, path_to_file):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Завантаження додаткових файлів»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
+
+        time.sleep(2)
+
+        wd.find_element_by_xpath("//input[@id='files']").send_keys(path_to_file)
+        wd.find_element_by_xpath("//div[@id='uploadForm']/form/div[3]/button/i").click()
+
+        time.sleep(2)
+
     def notifications_and_license_terms_import_second(self, comment):
         wd = self.app.wd
         # Натискаємо кнопку «Досьє»
 
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[7]/i").click()
 
         wd.find_element_by_xpath("//label[contains(.,'Прошу за місцем/місцями провадження господарської')]").click()
         wd.find_element_by_xpath("//label[contains(.,'Поштовим відправленням за місцезнаходженням')]").click()
@@ -1672,7 +1788,7 @@ class FirstApplicationHelper:
     def submit_application_import_second(self, path_to_key, password):
         wd = self.app.wd
         # Натискаємо кнопку «Подання заяви»
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[7]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[8]/i").click()
 
         # Натискаємо кнопку «Підписати і відправити заяву»
         wd.find_element_by_xpath("//a[@id='signButton']/span[2]").click()
@@ -1720,7 +1836,7 @@ class FirstApplicationHelper:
 
         time.sleep(5)
 
-##################################################################################################################################################################################  Import 15
+##################################################################################################################################################################################  Import 3_3
 
     def create_import_third_application(self):
         wd = self.app.wd
@@ -1750,11 +1866,14 @@ class FirstApplicationHelper:
 
         time.sleep(20)
 
+
+
+
     def notifications_and_license_terms_import_third(self, comment):
         wd = self.app.wd
         # Натискаємо кнопку «Досьє»
 
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[7]/i").click()
 
         wd.find_element_by_xpath("//label[contains(.,'Прошу за місцем/місцями провадження господарської')]").click()
         wd.find_element_by_xpath("//label[contains(.,'Поштовим відправленням за місцезнаходженням')]").click()
@@ -1811,11 +1930,27 @@ class FirstApplicationHelper:
 
         time.sleep(2)
 
+    def add_files_import_fourth(self, path_to_file):
+        wd = self.app.wd
+
+        # Натискаємо кнопку «Завантаження додаткових файлів»
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
+
+        time.sleep(2)
+
+        wd.find_element_by_xpath("//input[@id='files']").send_keys(path_to_file)
+        wd.find_element_by_xpath("//div[@id='uploadForm']/form/div[3]/button/i").click()
+
+        time.sleep(2)
+
     def notifications_and_license_terms_import_fourth(self, comment):
         wd = self.app.wd
-        # Натискаємо кнопку «Досьє»
 
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[4]/i").click()
+        time.sleep(2)
+
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[5]/i").click()
+
+        wd.find_element_by_xpath("//a[@id='licenseTerms']").click()
 
         time.sleep(2)
 
@@ -1833,7 +1968,7 @@ class FirstApplicationHelper:
     def submit_application_import_fourth(self, path_to_key, password):
         wd = self.app.wd
         # Натискаємо кнопку «Подання заяви»
-        wd.find_element_by_xpath("//div[@id='content-switcher']/a[5]/i").click()
+        wd.find_element_by_xpath("//div[@id='content-switcher']/a[6]/i").click()
 
         # Натискаємо кнопку «Підписати і відправити заяву»
         wd.find_element_by_xpath("//a[@id='signButton']/span[2]").click()
