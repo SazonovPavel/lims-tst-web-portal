@@ -258,15 +258,6 @@ class SessionHelper:
         # 10 Проверяю наличие элемента (заголовок Портал Держликслужбы)
         wd.find_element_by_xpath("//div[@class='header-inner']/h1").click()
 
-
-
-
-
-
-
-
-
-
     def logout(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//ul[@id='header-account-menu']/li/div/div/div/span").click()
