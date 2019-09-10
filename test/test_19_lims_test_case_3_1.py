@@ -8,7 +8,7 @@
 def test_19_lims_test_case_3_1(app):
     app.session.login(password='111',
                       path_to_key='C:/98745612_7878789898_DU180323123055.ZS2')
-    app.first_application.create_import_first_application(pib="Ступка Богдан Сильвестрович",
+    app.second_application.create_import_first_application(pib="Ступка Богдан Сильвестрович",
                                          email="test@test.ua",
                                          phone_number="+380123456789",
                                          fax_number="+380123456 789",
@@ -22,7 +22,7 @@ def test_19_lims_test_case_3_1(app):
                                          number_foreign_account="34567",
                                          requisits_number_forein_account="45678",
                                          duns_number="56789")
-    app.first_application.create_mpd_import(company_name='Тест1',
+    app.second_application.create_mpd_import(company_name='Тест1',
                            phone_number='+380123456789',
                            email='test@test.ua',
                            fax_number='+380123456789',
@@ -31,7 +31,7 @@ def test_19_lims_test_case_3_1(app):
                            street='Тестова вулиця',
                            adress='Test',
                            building='13')
-    app.first_application.create_mpd_import(company_name='Тест2',
+    app.second_application.create_mpd_import(company_name='Тест2',
                            phone_number='+380123456789',
                            email='test@test.ua',
                            fax_number='+380123456789',
@@ -40,7 +40,7 @@ def test_19_lims_test_case_3_1(app):
                            street='Тестова вулиця',
                            adress='Test',
                            building='13')
-    app.first_application.create_mpd_import(company_name='Тест3',
+    app.second_application.create_mpd_import(company_name='Тест3',
                            phone_number='+380123456789',
                            email='test@test.ua',
                            fax_number='+380123456789',
@@ -49,9 +49,9 @@ def test_19_lims_test_case_3_1(app):
                            street='Тестова вулиця',
                            adress='Test',
                            building='13')
-    app.first_application.information_about_medicines()
+    app.second_application.information_about_medicines()
 
-    app.first_application.authorized_persons(person_name='Тест',
+    app.second_application.authorized_persons(person_name='Тест',
                                    person_middle_name='Тестович',
                                    person_last_name='1 - Тестов',
                                    person_ipn='1234567890',
@@ -68,7 +68,7 @@ def test_19_lims_test_case_3_1(app):
                                    position='Тест директор',
                                    contact_information='12345',
                                    comment='Тест коментар')
-    app.first_application.authorized_persons_2(person_name='Тест',
+    app.second_application.authorized_persons_2(person_name='Тест',
                                              person_middle_name='Тестович',
                                              person_last_name='2 - Тестов',
                                              person_ipn='1234567890',
@@ -85,7 +85,7 @@ def test_19_lims_test_case_3_1(app):
                                              position='Тест директор',
                                              contact_information='12345',
                                              comment='Тест коментар')
-    app.first_application.authorized_persons_3(person_name='Тест',
+    app.second_application.authorized_persons_3(person_name='Тест',
                                              person_middle_name='Тестович',
                                              person_last_name='3 - Тестов',
                                              person_ipn='1234567890',
@@ -102,21 +102,21 @@ def test_19_lims_test_case_3_1(app):
                                              position='Тест директор',
                                              contact_information='12345',
                                              comment='Тест коментар')
-    app.first_application.dossier_file(version='1 - Тест досьє',
+    app.second_application.dossier_file(version='1 - Тест досьє',
                              comment='Тест коментар',
                              date_to='19.04.2025',
                              path_to_file='C:/masloy.png')
-    app.first_application.dossier_file_2(version='2 - Тест досьє',
+    app.second_application.dossier_file_2(version='2 - Тест досьє',
                              comment='Тест коментар',
                              date_to='19.04.2025',
                              path_to_file='C:/masloy.png')
-    app.first_application.dossier_file_3(version='3 - Тест досьє',
+    app.second_application.dossier_file_3(version='3 - Тест досьє',
                              comment='Тест коментар',
                              date_to='19.04.2025',
                              path_to_file='C:/masloy.png')
-    app.first_application.completeness_check_import()
+    app.second_application.completeness_check_import()
 
-    app.first_application.notifications_and_license_terms(comment='Коментар тест')
-    app.first_application.submit_application(path_to_key='C:/98745612_7878789898_DU180323123055.ZS2',
+    app.second_application.notifications_and_license_terms(comment='Коментар тест')
+    app.second_application.submit_application(path_to_key='C:/98745612_7878789898_DU180323123055.ZS2',
                                    password='111')
     app.session.logout()

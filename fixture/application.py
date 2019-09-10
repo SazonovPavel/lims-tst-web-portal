@@ -1,7 +1,8 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 from fixture.session import SessionHelper
 from fixture.first_application import FirstApplicationHelper
-
+from fixture.second_application import SecondApplicationHelper
+from fixture.third_application import ThirdApplicationHelper
 
 class Application:
 
@@ -12,6 +13,8 @@ class Application:
         self.wd.implicitly_wait(15)
         self.session = SessionHelper(self)
         self.first_application = FirstApplicationHelper(self)
+        self.second_application = SecondApplicationHelper(self)
+        self.third_application = ThirdApplicationHelper(self)
 
     def open_home_page(self):
         wd = self.wd
